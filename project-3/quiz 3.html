@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <style>
+    
+      div {
+        background-color: #12445f;
+        width: 5.2rem;
+        height: 2.4rem;
+        color: #ffffff;
+     
+        float: right;
+        position: relative;
+        bottom: 55px;
+      
+        display: none;
+      }
+
+    
+      span {
+        color: #ffffff;
+        background-color: #12445f;
+        width: 5.2rem;
+        height: 2.4rem;
+        position: relative;
+        bottom: 55px;
+       
+        float: left;
+       
+        display: none;
+      }
+
+      h3 {
+      
+        text-align: center;
+      }
+
+      section {
+        max-width: 1250px;
+      }
+
+      
+      input {
+        margin: 0.2rem auto;
+        display: block;
+      }
+
+     
+      button {
+      
+        position: relative;
+        bottom: 25px;
+        left: 738px;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <h1>Number guesser app!</h1>
+    <br />
+
+    <section>
+      <h3>Enter a number to check:</h3>
+      <input type="number" name="numGsdRef" id="numGsdRef" size="50" />
+      <button id="checkNumBtnRef">Click to check!</button>
+    </section>
+
+    
+    <div></div>
+    <div></div>
+    <div>TOO LOW</div>
+    <div></div>
+    <div></div>
+
+    
+    <span></span>
+    <span></span>
+    <span>TOO HIGH</span>
+    <span></span>
+    <span></span>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      var correctNumVal = 101;
+
+   
+      $("#checkNumBtnRef").click(function () {
+        
+        var inputtedGsdNumVal = $("#numGsdRef").val();
+
+       
+        if (inputtedGsdNumVal > correctNumVal) {
+       
+          $("div").hide("slow");
+          $("span").show("slow");
+        } else if (inputtedGsdNumVal < correctNumVal) {
+       
+          $("div").show("slow");
+          $("span").hide("slow");
+        } else if (inputtedGsdNumVal == correctNumVal) {
+         
+          alert("Correct!");
+          $("div").hide("slow");
+          $("span").hide("slow");
+        }
+      });
+    });
+  </script>
+</html>

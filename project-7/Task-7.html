@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javaScript Question</title>
+</head>
+<body>
+    <script src="JS-QUE.js"></script>
+</body>
+</html>
+<script>
+//A
+const JohnObject = {
+    firstName : "John",
+    lastName : "Cena",
+    birthYear: 1985,
+    job : "Software Engineer",
+    address : "Main Street, New York",
+    email : "john@xyz.com",
+    phoneNumber : 45845160,
+    hobby : "Running",
+    retirement : function (){
+        if (2021-this.birthYear > 60) {
+            return "John already retires";
+        }
+        else if (2021-this.birthYear <= 60 && 2021-this.birthYear >= 16) {
+            return `John will retire in the year ${2021-this.birthYear + 2021} and ${2021-this.birthYear} years are left for his retirement`;
+        }else{
+            return "John is less than 16 years old as of the year 2021";
+        }
+    }
+}
+// this is retirement function 
+// console.log(JohnObject.retirement()); 
+
+//B
+//below funtion takes 4 celcius tempratures and display them in farehnite as per suggested step
+function display4Fahrenheit(){
+    let tempratureCelcius = []; // celcius array 
+    let j;
+    for (j = 0; j < 4; j++) {
+        tempratureCelcius.push(Number(prompt("Celsius temperature:" + (j + 1)))); // taking celcius temperature value from user 
+    }
+
+    let tempratureFahrenheit = [];
+
+    for (let i = 0; i < tempratureCelcius.length; i++) {
+        tempratureFahrenheit[i] =  (tempratureCelcius[i] * 1.8) + 32; //CONVERTING
+    }
+    console.log(`We have converted the temperatures ${tempratureCelcius[0]} °C, ${tempratureCelcius[1]} °C, ${tempratureCelcius[2]} °C and ${tempratureCelcius[3]} °C to Fahrenheit upon your request, they are ${tempratureFahrenheit[0]} °F ,${tempratureFahrenheit[1]} °F ,${tempratureFahrenheit[2]} °F and ${tempratureFahrenheit[3]} °F`);
+}
+// calling display4Faherenheit() function
+//  display4Fahrenheit(); 
+
+//C
+//masses are in Kg and heights are in meter
+function checkBMI(mass,height,Name){
+    let BMI = mass / (height*height);
+    if (BMI < 18.5) {
+      return  `${Name}’s BMI is ${BMI}, and ${Name} is underweight based the body fat indicator, It is recommended to check more details with a doctor.`
+    }else if(BMI >= 18.5 && BMI <= 24.9){
+        return `${Name}’s BMI is ${BMI}, and Congrats! ${Name}’s body weight is ideal.`
+    }else if(BMI >= 25 && BMI <= 29.9){
+        return `${Name}’s BMI is ${BMI}, and ${Name} is overweight based on our body fat indicator. It is recommended to check more details with a doctor.`
+    }else if (BMI >= 30 ) {
+        return `${Name}’s BMI is ${BMI}, and ${Name} is obesity based on our body fat indicator, please try to see a doctor!!`
+    }
+}
+let Mark = {
+    mass: 65,
+    height:1.8,
+    Name : "Mark"
+}
+let John = {
+    mass: 70,
+    height:1.5,
+    Name : "John"
+}
+let Lucas ={
+    mass: 55,
+    height:1.8,
+    Name : "Lucas"
+}
+// calling checking BMI
+// console.log(checkBMI(Mark.mass,Mark.height,Mark.Name)); 
+</script>

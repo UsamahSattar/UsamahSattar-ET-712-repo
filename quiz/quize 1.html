@@ -1,0 +1,40 @@
+<html>
+<body>
+<head>
+<h1><center>BMI Comparison<center></h1>
+</head>
+<script>
+
+var Lucas_mass; 
+var Lucas_height; 
+var John_mass; 
+var John_height; 
+var Lucas_BMI; 
+var John_BMI;
+
+Lucas_mass = prompt('Enter Lucas\'s Mass(in kg)?');
+Lucas_height = prompt('Enter Lucas\'s Height(in meter)?');
+John_mass = prompt('Enter John\'s Mass(in kg)?');
+John_height = prompt('Enter John\'s Height(in meter)?');
+
+Lucas_BMI = Lucas_mass / (Lucas_height * Lucas_height);
+John_BMI = John_mass / (John_height * John_height);
+
+var markHigherBMI   = Lucas_BMI > John_BMI;
+document.write("The value of markHigherBMI is: ",markHigherBMI);
+
+</script>
+<script>
+// Create a Boolean variable 'steveHigherBMI' containing information about whether lucas has a higher BMI than John.
+var lucasHigherBMI = lucasBMI > JohnsBMI;
+// Displaying which BMI is greater
+if(steveHigherBMI){
+console.log("lucas's BMI is higher than John's!");
+}
+else{
+console.log("John's BMI is higher than lucas's!");
+}
+	</script>
+	
+</body>
+</html>

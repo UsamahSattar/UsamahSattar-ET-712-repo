@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pet game</title>
+  </head>
+	<style>
+	body {
+		background-color: aquamarine;
+	}
+</style>
+
+  <body>
+    <button onclick="rabbit()">
+      Rabbit
+    </button>
+
+    <button onclick="dog()">
+      Dog
+    </button>
+    <button onclick="cat()">
+      CAT
+    </button>
+
+    <h1 id="msg"></h1>
+    <img id="img" style="dispaly: none;" width="50%" />
+   
+  </body>
+</html>
+
+<script>
+class pet {
+  constructor(name, age, gender, species) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.species = species;
+  }
+  showMsg() {
+    if (this.gender === "male") {
+      return (
+        this.name +
+        " is a " +
+        this.species +
+        ", and he is " +
+        this.age +
+        " years old now"
+      );
+    } else {
+      return (
+        this.name +
+        " is a " +
+        this.species +
+        ", and she is " +
+        this.age +
+        " years old now"
+      );
+    }
+  }
+  showImg() {
+    switch (this.species) {
+      case "Rabbit":
+        return "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2019/03/rabbit-475261_0.jpg?h=c855054e&itok=lfjXk4-x";
+        break;
+      case "Dog":
+        return "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*";
+      case "Cat":
+        return "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_2x3.jpg";
+      default:
+        break;
+    }
+  }
+}
+let msg = document.getElementById("msg");
+let img = document.getElementById("img");
+function rabbit() {
+  let rab = new pet("Fluffy", 2, "male", "Rabbit");
+  msg.innerHTML = rab.showMsg();
+  img.style.display = "block";
+  img.src = rab.showImg();
+}
+
+function dog() {
+  let dg = new pet("Jhon", 4, "male", "Dog");
+  msg.innerHTML = dg.showMsg();
+  img.style.display = "block";
+  img.src = dg.showImg();
+}
+function cat() {
+  let ca = new pet("pinkey", 1.5, "female", "Cat");
+  msg.innerHTML = ca.showMsg();
+  img.style.display = "block";
+  img.src = ca.showImg();
+}
+
+</script>

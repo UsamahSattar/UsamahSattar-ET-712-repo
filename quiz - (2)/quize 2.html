@@ -1,0 +1,128 @@
+ <body>
+    <h1> json example</h1>
+    <ul></ul>
+  </body>
+  <script>
+    var myList = document.querySelector("ul");
+    //file is the name of json file to be passed to the function
+    //initially it is empty as no json file is passed
+    let file = "";
+    //using the variable click the number of click is tracked
+    let click = 0;
+   
+    function displayData(file) {
+      fetch(file)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then(function (json) {
+          for (var i = 0; i < json.Pets.length; i++) {
+            var listItem = document.createElement("li");
+            listItem.innerHTML = "<strong>" + json.Pets[i].Name + "</strong>";
+            listItem.innerHTML += " is a type of " + json.Pets[i].Type + ".";
+            listItem.innerHTML +=
+              " Cost: <strong>$" + json.Pets[i].Price + "</strong>";
+            myList.appendChild(listItem);
+          }
+        })
+        .catch(function (error) {
+          var p = document.createElement("p");
+          p.appendChild(document.createTextNode("Error: " + error.message));
+          document.body.insertBefore(p, myList);
+        });
+    }
+
+   
+    function onButtonClick() {
+      //if click is 0 the first json file pets1 is passed to displaydata
+      if (click === 0) {
+        file = "pets1.json";
+
+        displayData(file);
+        click = click + 1;
+        var btn = document.getElementById("button1");
+        btn.innerHTML = "Press for exotic pets";
+      }
+      //if click is 1 the second json file pets2 is passed to displaydata
+      else if (click === 1) {
+        let child = myList.lastElementChild;
+        //The elements of unordered list is cleared for pet1 file
+        while (child) {
+          myList.removeChild(child);
+          child = myList.lastElementChild;
+        }
+        file = "pets2.json";
+        displayData(file);
+        click = click + 1;
+        // The below code changes the text of the button
+        var btn = document.getElementById("button1");
+        btn.innerHTML = "Press To close";
+      } else {
+        click = 0;
+
+        // The below code removes the button
+        var btn = document.getElementById("button1");
+        btn.remove();
+      }
+    }
+  </script>
+  <button id="button1" onclick="onButtonClick()">Press To see Dogs</button>
+</html>
+
+<style>
+html {
+  font-family: sans-serif;
+}
+/* style for list */
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+/* style for list */
+li {
+  margin-bottom: 10px;
+  background-color: pink;
+  font-size: 150%;
+  border-top: 3px solid pink;
+  border-bottom: 3px solid pink;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+strong {
+  background-color: purple;
+  color: white;
+  padding: 0 8px;
+  border-top: 3px solid purple;
+  border-bottom: 3px solid purple;
+  text-shadow: 2px 2px 1px black;
+}
+pet1.json file
+
+{
+  "Pets": [
+    { "Name": "Siberian Huskey", "Price": 250, "Type": "Working Dog" },
+    { "Name": "Labrador", "Price": 300, "Type": "Guide Dog" },
+    { "Name": "DoberMan", "Price": 400, "Type": "Guard Dog" },
+    { "Name": "German Shephard", "Price": 105, "Type": "Working Dog" },
+    { "Name": "Beagle", "Price": 105, "Type": "Hound Dog" },
+    { "Name": "Fox Terrier", "Price": 300, "Type": "Hunting Dog" }
+  ]
+}
+pets2.json
+
+{
+  "Pets": [
+    { "Name": "Persian Cat", "Price": 2005, "Type": "Cat" },
+    { "Name": "Iguana", "Price": 3000, "Type": "Reptiles" },
+    { "Name": "Rabbit", "Price": 400, "Type": "Rodents" },
+    { "Name": "Cockatiel ", "Price": 105, "Type": "Parrots" },
+    { "Name": "Cockatoos", "Price": 1005, "Type": "Parrots" },
+    { "Name": "Arabian Horse", "Price": 3000, "Type": "Horse" }
+  ]
+}
+</style>
